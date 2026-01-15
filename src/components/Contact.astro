@@ -1,0 +1,291 @@
+---
+---
+<section id="contacto" class="contact-section">
+  <div class="container">
+    
+    <div class="info-box">
+      <h2>Hablemos</h2>
+      <p>Estamos listos para asesorarte. Dejanos tus datos y nos pondremos en contacto a la brevedad.</p>
+      
+      <div class="contact-details">
+        <div class="detail-item">
+          <strong>📍 Oficina:</strong>
+          <span>Av. Mitre 1234, Munro, Vicente López</span>
+        </div>
+        <div class="detail-item">
+          <strong>📧 Email:</strong>
+          <span>consultas@silbertseguros.com</span>
+        </div>
+        <div class="detail-item">
+          <strong>📞 Teléfono:</strong>
+          <span>011 4760-0000</span>
+        </div>
+        <div class="detail-item">
+          <strong>🕒 Horario:</strong>
+          <span>Lun a Vie de 9:00 a 18:00hs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <form id="contactForm">
+        
+        <div class="form-group">
+          <label for="nombre">Nombre Completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono / Celular</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej: 11 1234 5678" required>
+        </div>
+
+        <div class="form-group">
+          <label for="interes">Me interesa cotizar:</label>
+          <select id="interes" name="interes">
+            <option value="Automotor">Automotor Particular</option>
+            <option value="Flotas">Flotas Comerciales</option>
+            <option value="Motos">Motos</option>
+            <option value="Hogar">Hogar & Combinado</option>
+            <option value="Comercio">Integral de Comercio</option>
+            <option value="ART">ART / Accidentes</option>
+            <option value="Caucion">Caución / Garantías</option>
+            <option value="Agro">Agro / Silobolsa</option>
+            <option value="Vida">Vida / Retiro</option>
+            <option value="RC">Responsabilidad Civil</option>
+            <option value="AP">Accidentes Personales</option>
+            <option value="Transporte">Transporte de Cargas</option>
+            <option value="Otro">Otra consulta</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Datos Adicionales (Opcional)</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Marca, Modelo y Año del vehículo..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">ENVIAR CONSULTA</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Elementos del DOM
+    const selector = document.getElementById('interes') as HTMLSelectElement;
+    const mensajeArea = document.getElementById('mensaje') as HTMLTextAreaElement;
+    
+    // 2. Diccionario de "Ayudas" para el usuario
+    const ayudas = {
+        'Automotor': 'Por favor indícanos: Marca, Modelo y Año del vehículo.',
+        'Motos': 'Por favor indícanos: Marca, Cilindrada y Año.',
+        'Hogar': '¿Es casa o departamento? ¿Metros cuadrados aproximados?',
+        'Vida': '¿Qué edad tienes y qué capital te gustaría asegurar?',
+        'ART': '¿Cuántos empleados tiene la nómina aproximadamente?',
+        'Otro': 'Cuéntanos brevemente en qué podemos ayudarte.'
+    };
+
+    // 3. Función para actualizar el placeholder
+    function actualizarAyuda() {
+        const seleccion = selector.value;
+        // Si existe una ayuda específica, la usamos. Si no, usamos una genérica.
+        mensajeArea.placeholder = ayudas[seleccion] || 'Cuéntanos más detalles para poder asesorarte mejor.';
+    }
+
+    // 4. Escuchar cambios en el selector
+    selector.addEventListener('change', actualizarAyuda);
+
+
+    // --- LÓGICA DE PARÁMETROS URL (Igual que antes) ---
+    const params = new URLSearchParams(window.location.search);
+    const tema = params.get('tema');
+
+    if (tema && selector) {
+      const opciones = {
+        'auto': 'Automotor',
+        'flotas': 'Flotas',
+        'motos': 'Motos',
+        'hogar': 'Hogar',
+        'comercio': 'Comercio',
+        'art': 'ART',
+        'caucion': 'Caucion',
+        'agro': 'Agro',
+        'vida': 'Vida',
+        'rc': 'RC',
+        'ap': 'AP',
+        'transporte': 'Transporte'
+      };
+
+      if (opciones[tema]) {
+        selector.value = opciones[tema];
+        actualizarAyuda(); // Actualizamos el placeholder apenas carga
+      }
+    }
+
+    // --- LÓGICA DE ENVÍO ---
+    const form = document.getElementById('contactForm');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
+        const telefono = (document.getElementById('telefono') as HTMLInputElement).value;
+        const interes = (document.getElementById('interes') as HTMLSelectElement).value;
+        const mensaje = (document.getElementById('mensaje') as HTMLInputElement).value;
+        
+        // BORRAMOS LA LÍNEA QUE BUSCABA LA PREFERENCIA
+        // const preferencia = ... (Ya no existe)
+
+        const telefonoDestino = "5491100000000"; // Cambiar
+
+        // Construimos el mensaje SIN la parte de preferencia
+        let texto = `Hola Silbert, soy ${nombre}. Consulto por *${interes}*. `;
+        texto += `Mi teléfono es ${telefono}. `;
+        if (mensaje) texto += `Detalles: ${mensaje}`;
+
+        const url = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(texto)}`;
+        
+        window.open(url, '_blank');
+      });
+    }
+  });
+</script>
+
+<style>
+  .contact-section {
+    padding: 5rem 0;
+    background-color: white;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 50px;
+  }
+
+  .info-box {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .info-box h2 {
+    color: #003366;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-box p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .detail-item {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .detail-item strong {
+    color: #003366;
+    margin-bottom: 0.3rem;
+  }
+
+  .form-box {
+    flex: 1;
+    min-width: 300px;
+    background-color: #e1ebf5ff; 
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #003366;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  input[type="text"], input[type="tel"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  /* Estilos nuevos para los Radio Buttons */
+  .radio-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .radio-label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    transition: all 0.2s;
+  }
+
+  .radio-label:hover {
+    border-color: #003366;
+  }
+
+  /* Cambia el estilo cuando el radio está seleccionado (Truco CSS) */
+  .radio-label:has(input:checked) {
+    background-color: #e6f0fa;
+    border-color: #003366;
+    color: #003366;
+    font-weight: bold;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #003366;
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-submit:hover {
+    background-color: #e03e00;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+</style>

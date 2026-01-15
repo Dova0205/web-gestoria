@@ -1,0 +1,123 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    
+    <div class="footer-col">
+      <h3>SILBERT <span class="highlight">SEGUROS</span></h3>
+      <p>Asesoramiento integral con más de 20 años de trayectoria en el mercado asegurador. Protegemos tu patrimonio y tu futuro.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/#servicios">Servicios</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>📍 Av. Mitre 1234, Munro</p>
+      <p>📞 011 4760-0000</p>
+      <p>📧 info@silbertseguros.com</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} Silbert Seguros. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: #002244; /* Un azul más profundo que el navbar */
+    color: #e0e0e0;
+    padding-top: 4rem;
+    font-size: 0.95rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas automáticas */
+    gap: 40px;
+    padding-bottom: 3rem;
+  }
+
+  h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .highlight {
+    color: #ff4500;
+  }
+
+  h4 {
+    color: white;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .footer-col p {
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    color: #b0c4de;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-col ul li a {
+    color: #b0c4de;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-col ul li a:hover {
+    color: #ff4500;
+    padding-left: 5px; /* Efecto de movimiento sutil */
+  }
+
+  .footer-bottom {
+    background-color: #001a33; /* Aún más oscuro para el borde final */
+    padding: 1.5rem 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .developer {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+  
+  /* Móvil */
+  @media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+  }
+</style>
