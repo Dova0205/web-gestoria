@@ -1,12 +1,14 @@
 ---
 ---
 <section class="hero-section">
-  <div class="overlay"></div> <div class="content">
+  <div class="overlay"></div> 
+  <div class="content">
     <h1>Protegemos lo que más te importa</h1>
     <p>Asesoramiento integral en seguros con la confianza y experiencia de <strong>Silbert Seguros</strong>.</p>
     
     <div class="cta-buttons">
-      <a href="/#servicios" class="btn-primary">Cotizá tu Seguro</a> <a href="/contacto" class="btn-secondary">Hablemos</a> 
+      <a href="/#servicios" class="btn-primary">Cotizá tu Seguro</a> 
+      <a href="/contacto" class="btn-secondary">Hablemos</a> 
     </div>
   </div>
 </section>
@@ -17,28 +19,28 @@
     background-image: url('/portada.jpg');
     background-size: cover;
     background-position: center;
-    height: 85vh; /* Ocupa el 85% de la altura de la pantalla, muy impactante */
+    height: 85vh;
     display: flex;
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
   }
 
-  /* El filtro azulado estilo National Brokers */
+  /* Blue Overlay */
   .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 51, 102, 0.7); /* Azul corporativo #003366 con transparencia */
+    background: rgba(0, 51, 102, 0.7);
     z-index: 1;
   }
 
   .content {
     position: relative;
-    z-index: 2; /* Para que el texto quede ENCIMA del filtro azul */
+    z-index: 2;
     max-width: 800px;
     padding: 0 20px;
   }
@@ -46,7 +48,7 @@
   h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    font-weight: 800; /* Letra bien gruesa */
+    font-weight: 800;
     line-height: 1.2;
   }
 
@@ -62,7 +64,7 @@
     justify-content: center;
   }
 
-  /* Botón Principal (Naranja/Rojo) */
+  /* Buttons */
   .btn-primary {
     background-color: #ff4500;
     color: white;
@@ -76,10 +78,9 @@
 
   .btn-primary:hover {
     background-color: #e03e00;
-    transform: scale(1.05); /* Efecto de "crecer" un poquito */
+    transform: scale(1.05);
   }
 
-  /* Botón Secundario (Borde Blanco transparente) */
   .btn-secondary {
     border: 2px solid white;
     color: white;
@@ -96,7 +97,7 @@
     color: #003366;
   }
 
-  /* Ajuste para celulares */
+  /* Mobile */
   @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     .cta-buttons { flex-direction: column; }

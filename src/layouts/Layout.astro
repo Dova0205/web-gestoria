@@ -1,9 +1,7 @@
 ---
-// 1. IMPORTAMOS LOS COMPONENTES
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
-// 2. DEFINIMOS LAS PROPIEDADES 
 interface Props {
 	title: string;
 }
@@ -12,7 +10,8 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es"> <head>
+<html lang="es">
+	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     	<meta name="description" content="Silbert Seguros - Asesoramiento integral en seguros patrimoniales, vida y ART. Más de 20 años protegiendo tu futuro." />
@@ -21,21 +20,18 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-		<title>Silbert Seguros | Asesoría Profesional</title>
+		<title>Silbert Seguros | {title}</title>
 	</head>
 	<body>
 		
 		<Navbar />
-
 		<slot />
-
 		<Footer />
 
 	</body>
 </html>
 
 <style is:global>
-	/* Reseteo básico para eliminar márgenes extraños */
 	*, *::before, *::after {
 		box-sizing: border-box;
 		margin: 0;
@@ -49,7 +45,7 @@ const { title } = Astro.props;
 		height: 100%;
 		font-family: 'Montserrat', sans-serif;
 		background-color: #ffffff;
-		scroll-behavior: smooth; /* Desplazamiento suave */
+		scroll-behavior: smooth;
 		overflow-x: hidden; 
         width: 100%;
 	}
