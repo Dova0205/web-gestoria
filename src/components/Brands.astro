@@ -1,0 +1,143 @@
+---
+/* LISTA DE COMPAÑÍAS (En el orden solicitado)
+  Asegúrate de que los archivos existan en /public/marcas/
+*/
+const brands = [
+  { name: "Zurich", logo: "/marcas/zurich.png" },
+  { name: "Allianz", logo: "/marcas/allianz.png" },
+  { name: "La Holando", logo: "/marcas/la-holando.png" },
+  { name: "Asociart ART", logo: "/marcas/asociart.png" },
+  { name: "Mercantil Andina", logo: "/marcas/mercantil-andina.png" },
+  { name: "Swiss Medical", logo: "/marcas/swiss-medical.png" },
+  { name: "Barbuss", logo: "/marcas/barbuss.png" },
+  { name: "ATM Seguros", logo: "/marcas/atm.png" },
+  { name: "Berkley", logo: "/marcas/berkley.png" },
+];
+---
+
+<section id="companias" class="brands-section">
+  <div class="container">
+    <p class="section-title">Trabajamos con las compañías líderes</p>
+    
+    <div class="slider">
+      <div class="slide-track">
+        
+        {/* BLOQUE 1: Originales */}
+        {brands.map((brand) => (
+          <div class="slide">
+            <img src={brand.logo} alt={`Seguros ${brand.name}`} />
+          </div>
+        ))}
+
+        {/* BLOQUE 2: Duplicados (Para el efecto infinito) */}
+        {brands.map((brand) => (
+          <div class="slide">
+            <img src={brand.logo} alt={`Seguros ${brand.name}`} />
+          </div>
+        ))}
+
+        {/* BLOQUE 3: Triplicados (Por seguridad en pantallas muy anchas) */}
+        {brands.map((brand) => (
+          <div class="slide">
+            <img src={brand.logo} alt={`Seguros ${brand.name}`} />
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .brands-section {
+    background-color: #f8f9fa;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    overflow: hidden; 
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-title {
+    color: #6c757d;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* --- CARRUSEL INFINITO --- */
+  .slider {
+    height: 90px;
+    margin: auto;
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    /* Sombras laterales para suavizar bordes */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  }
+
+  .slide-track {
+    display: flex;
+    /* Cálculo automático: Ancho de slide (200px) * Cantidad total de logos (9 * 3 bloques = 27) */
+    width: calc(200px * 27); 
+    animation: scroll 40s linear infinite;
+  }
+
+  .slide {
+    height: 90px;
+    width: 200px; /* Espacio reservado para cada logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px; /* Separación entre logos */
+  }
+
+  .slide img {
+    max-width: 100%;
+    max-height: 70px; /* Altura controlada */
+    filter: grayscale(100%); /* Efecto gris profesional */
+    opacity: 0.6; 
+    transition: all 0.3s ease;
+    object-fit: contain; /* Evita que se deformen */
+  }
+
+  /* Efecto Hover: Color y brillo */
+  .slide img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    /* Desplaza 1 bloque entero de logos (9 logos * 200px = 1800px) */
+    100% { transform: translateX(calc(-200px * 9)); }
+  }
+
+  /* Pausa al pasar el mouse */
+  .slider:hover .slide-track {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 768px) {
+    .slide { width: 150px; padding: 0 15px; }
+    .slide img { max-height: 50px; }
+    /* Ajustamos la animación para el tamaño móvil */
+    .slide-track { width: calc(150px * 27); }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-150px * 9)); }
+    }
+  }
+</style>
