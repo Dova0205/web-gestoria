@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+/* LISTA DE EMPRESAS
+   Instrucciones:
+   1. Poné los números reales.
+   2. En 'icon1' o 'icon2' usá estas palabras clave:
+      - 'auto'    -> Muestra la Grúa
+      - 'medico'  -> Muestra la Ambulancia
+      - 'telefono' -> Muestra el Teléfono clásico
+*/
+
+const companies = [
+  { 
+    name: "Allianz", 
+    logo: "/marcas/allianz.png", 
+    label1: "Auxilio Mecánico", num1: "0800-888-2424", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0810-222-2243", icon2: "telefono"
+  },
+  { 
+    name: "Asociart ART", 
+    logo: "/marcas/asociart.png", 
+    label1: "Emergencias Médicas", num1: "0800-888-0093", icon1: "medico",
+    label2: "Atención al Cliente", num2: "0810-888-0093", icon2: "telefono"
+  },
+  { 
+    name: "ATM Seguros", 
+    logo: "/marcas/atm.png", 
+    label1: "Auxilio Mecánico", num1: "0800-000-0000", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0800-000-0000", icon2: "telefono"
+  },
+  { 
+    name: "Barbuss", 
+    logo: "/marcas/barbuss.png", 
+    label1: "Siniestros / Auxilio", num1: "0800-000-0000", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0800-000-0000", icon2: "telefono"
+  },
+  { 
+    name: "Berkley", 
+    logo: "/marcas/berkley.png", 
+    label1: "Auxilio Mecánico", num1: "0800-000-0000", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0800-000-0000", icon2: "telefono"
+  },
+  { 
+    name: "La Holando", 
+    logo: "/marcas/la-holando.png", 
+    label1: "Auxilio Mecánico", num1: "0800-333-6000", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0800-999-0002", icon2: "telefono"
+  },
+  { 
+    name: "Mercantil Andina", 
+    logo: "/marcas/mercantil-andina.png", 
+    label1: "Auxilio Mecánico", num1: "0800-888-4488", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0810-888-6262", icon2: "telefono"
+  },
+  { 
+    name: "Swiss Medical", 
+    logo: "/marcas/swiss-medical.png", 
+    label1: "Auxilio Mecánico", num1: "0800-333-7723", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0810-666-2222", icon2: "telefono"
+  },
+  { 
+    name: "Zurich", 
+    logo: "/marcas/zurich.png", 
+    label1: "Auxilio ZURICH", num1: "0800-333-9874", icon1: "auto",
+    label2: "Atención al Cliente", num2: "0810-999-2424", icon2: "telefono"
+  },
+];
+
+const icons: any = {
+  auto: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-car-crane"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 18h8m4 0h2v-6a5 5 0 0 0 -5 -5h-1l1.5 5h4.5" /><path d="M12 18v-11h3" /><path d="M3 17v-5h9" /><path d="M4 12v-6l18 -3v2" /><path d="M8 12v-4l-4 -2" /></svg>`,
+  
+  medico: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-ambulance"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" /><path d="M6 10h4m-2 -2v4" /></svg>`,
+  
+  telefono: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`
+};
+---
+
+<Layout title="Teléfonos de Emergencia | Silbert Seguros">
+  <main class="page-container">
+    
+    <header class="page-header">
+      <h1>Asistencia y <span class="highlight">Emergencias</span></h1>
+      <p>Tené a mano tu póliza y contactá directamente con tu compañía las 24hs.</p>
+    </header>
+
+    <div class="cards-grid">
+      {companies.map((company) => (
+        <article class="company-card">
+          <div class="card-header">
+            <img src={company.logo} alt={`Logo ${company.name}`} />
+          </div>
+          
+          <div class="card-body">
+            <a href={`tel:${company.num1}`} class="btn-call btn-grua">
+              <span class="icon-svg" set:html={icons[company.icon1]} />
+              <div>
+                <span class="label">{company.label1}</span>
+                <span class="number">{company.num1}</span>
+              </div>
+            </a>
+
+            <a href={`tel:${company.num2}`} class="btn-call btn-cliente">
+              <span class="icon-svg" set:html={icons[company.icon2]} />
+              <div>
+                <span class="label">{company.label2}</span>
+                <span class="number">{company.num2}</span>
+              </div>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 60px; 
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight {
+    color: #ff4500;
+  }
+
+  .page-header p {
+    color: #666;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .company-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .company-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .card-header {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    height: 100px;
+  }
+
+  .card-header img {
+    max-height: 60px;
+    max-width: 80%;
+    object-fit: contain;
+    mix-blend-mode: multiply; 
+  }
+
+  .card-header img[src*="swiss"], 
+  .card-header img[src*="mercantil"] {
+    transform: scale(1.5);
+    max-width: 100%;
+  }
+
+  .card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-call {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .icon-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  .icon-svg :global(svg) {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .number {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  /* BOTONES */
+  .btn-grua {
+    background-color: #fff0eb; 
+    color: #cc3700;
+    border: 1px solid #ffccbc;
+  }
+  
+  .btn-grua:hover {
+    background-color: #ff4500;
+    color: white;
+    border-color: #ff4500;
+  }
+
+  .btn-cliente {
+    background-color: #f8f9fa;
+    color: #555;
+    border: 1px solid #e9ecef;
+  }
+
+  .btn-cliente:hover {
+    background-color: #e2e6ea;
+    color: #333;
+  }
+</style>

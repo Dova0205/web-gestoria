@@ -73,12 +73,11 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    
+
     const selector = document.getElementById('interes') as HTMLSelectElement;
     const mensajeArea = document.getElementById('mensaje') as HTMLTextAreaElement;
-    
-    // Helper text dictionary
-    const ayudas = {
+
+    const ayudas: any = {
         'Automotor': 'Por favor indícanos: Marca, Modelo y Año del vehículo.',
         'Motos': 'Por favor indícanos: Marca, Cilindrada y Año.',
         'Hogar': '¿Es casa o departamento? ¿Metros cuadrados aproximados?',
@@ -88,18 +87,23 @@
     };
 
     function actualizarAyuda() {
+        // Chequeo de seguridad por si el elemento no cargó
+        if (!selector || !mensajeArea) return;
+
         const seleccion = selector.value;
         mensajeArea.placeholder = ayudas[seleccion] || 'Cuéntanos más detalles para poder asesorarte mejor.';
     }
 
-    selector.addEventListener('change', actualizarAyuda);
+    if (selector) {
+        selector.addEventListener('change', actualizarAyuda);
+    }
 
-    // --- URL PARAMETERS LOGIC ---
+    // --- LÓGICA DE PARÁMETROS URL ---
     const params = new URLSearchParams(window.location.search);
     const tema = params.get('tema');
 
     if (tema && selector) {
-      const opciones = {
+      const opciones: any = {
         'auto': 'Automotor',
         'flotas': 'Flotas',
         'motos': 'Motos',
@@ -113,18 +117,22 @@
         'ap': 'AP',
         'transporte': 'Transporte'
       };
+      
+      // Ahora podemos verificar si existe sin errores rojos
       if (opciones[tema]) {
         selector.value = opciones[tema];
         actualizarAyuda();
       }
     }
 
-    // --- WHATSAPP SUBMISSION LOGIC ---
+    // --- ENVÍO A WHATSAPP ---
     const form = document.getElementById('contactForm');
+    
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault(); 
 
+        // Obtenemos valores asegurándonos del tipo de elemento
         const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
         const telefono = (document.getElementById('telefono') as HTMLInputElement).value;
         const interes = (document.getElementById('interes') as HTMLSelectElement).value;
