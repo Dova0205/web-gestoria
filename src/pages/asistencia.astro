@@ -1,69 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-/* LISTA DE EMPRESAS
-   Instrucciones:
-   1. Poné los números reales.
-   2. En 'icon1' o 'icon2' usá estas palabras clave:
-      - 'auto'    -> Muestra la Grúa
-      - 'medico'  -> Muestra la Ambulancia
-      - 'telefono' -> Muestra el Teléfono clásico
-*/
-
 const companies = [
   { 
     name: "Allianz", 
     logo: "/marcas/allianz.png", 
     label1: "Auxilio Mecánico", num1: "0800-888-2424", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0810-222-2243", icon2: "telefono"
   },
   { 
     name: "Asociart ART", 
     logo: "/marcas/asociart.png", 
     label1: "Emergencias Médicas", num1: "0800-888-0093", icon1: "medico",
-    label2: "Atención al Cliente", num2: "0810-888-0095", icon2: "telefono"
   },
   { 
     name: "ATM Seguros", 
     logo: "/marcas/atm.png", 
     label1: "Auxilio Mecánico", num1: "0800-345-1240", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0810-345-0492", icon2: "telefono"
   },
   { 
     name: "Barbuss", 
     logo: "/marcas/barbuss.png", 
     label1: "Siniestros / Auxilio", num1: "0800-555-4587", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0800-666-8400", icon2: "telefono"
   },
   { 
     name: "Berkley", 
     logo: "/marcas/berkley.png", 
     label1: "Auxilio Mecánico", num1: "0800-555-0465", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0800-555-3031", icon2: "telefono"
   },
   { 
     name: "La Holando", 
     logo: "/marcas/la-holando.png", 
     label1: "Auxilio Mecánico", num1: "0800-999-0002", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0800-666-6778", icon2: "telefono"
   },
   { 
     name: "Mercantil Andina", 
     logo: "/marcas/mercantil-andina.png", 
     label1: "Auxilio Mecánico", num1: "0800-888-4488", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0810-888-6262", icon2: "telefono"
   },
   { 
     name: "Swiss Medical", 
     logo: "/marcas/swiss-medical.png", 
     label1: "Auxilio Mecánico", num1: "0800-777-7800", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0800-555-7000", icon2: "telefono"
   },
   { 
     name: "Zurich", 
     logo: "/marcas/zurich.png", 
     label1: "Auxilio ZURICH", num1: "0800-222-1600", icon1: "auto",
-    label2: "Atención al Cliente", num2: "0810-333-9874", icon2: "telefono"
   },
 ];
 
@@ -97,14 +79,6 @@ const icons: any = {
               <div>
                 <span class="label">{company.label1}</span>
                 <span class="number">{company.num1}</span>
-              </div>
-            </a>
-
-            <a href={`tel:${company.num2}`} class="btn-call btn-cliente">
-              <span class="icon-svg" set:html={icons[company.icon2]} />
-              <div>
-                <span class="label">{company.label2}</span>
-                <span class="number">{company.num2}</span>
               </div>
             </a>
           </div>
