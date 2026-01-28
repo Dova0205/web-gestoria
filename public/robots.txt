@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://silbertseguros.com.ar/sitemap-index.xml
