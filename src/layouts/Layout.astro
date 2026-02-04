@@ -16,11 +16,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-		<link rel="canonical" href={canonicalURL} />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
 		<title>{title}</title>
 		<meta name="description" content="Silbert Seguros - Asesoramiento integral en seguros patrimoniales, vida y ART. Más de 30 años protegiendo tu futuro en Buenos Aires." />
-		<meta name="keywords" content="gestoria, seguros, automotor, tramites, buenos aires, silbert, seguro auto, seguro hogar" />
+		<meta name="keywords" content="gestoria, seguros, automotor, tramites, buenos aires, silbert, silvert, silver seguros, zilbert, seguro auto, seguro hogar" />
 		<meta name="author" content="Silbert Seguros" />
 
 		<meta property="og:title" content={title} />
