@@ -21,7 +21,9 @@ const currentYear = new Date().getFullYear();
 
     <div class="footer-col">
       <h4>Contacto</h4>
-      <p>📍 Montañeses 1892 Belgrano</p>
+      <p>📍 <a href="https://maps.app.goo.gl/rwFx5cmB1NpAuwpw5" target="_blank" rel="noopener noreferrer" class="link-direccion">
+      Montañeses 1892 Belgrano</a>
+      </p>
       <p>📞 +54 9 11 5877-8821 Pamela Weidgans</p>
       <p>📧 silberteguros@barter-group.com</p>
     </div>
@@ -106,6 +108,16 @@ const currentYear = new Date().getFullYear();
     flex-wrap: wrap;
     width: 100%;
     margin: 0 auto;
+  }
+
+  .link-direccion {
+  color: #b0c4de;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  }
+
+  .link-direccion:hover {
+  text-decoration: underline;
   }
 
   /* Mobile */
