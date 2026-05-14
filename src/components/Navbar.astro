@@ -3,18 +3,8 @@
 <nav class="navbar">
   <div class="container">
 
-    <a href="/" class="logo">
-      <div class="logo-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
-          <path d="M12 11m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-          <path d="M12 12v2.5" />
-        </svg>
-      </div>
-      <div class="logo-text">
-        <span class="brand-name">SILBERT</span>
-        <span class="brand-sub">SEGUROS</span>
-      </div>
+    <a href="/" class="logo-link">
+      <img src="/logo.svg" alt="Silbert Seguros" class="main-logo" width="220" height="50" />
     </a>
 
     <div class="hamburger" id="hamburger-btn">
@@ -29,7 +19,6 @@
       <li><a href="/#nosotros">Nosotros</a></li>
       <li><a href="/asistencia" style="color: #ff4500; font-weight: bold;">SOS / Asistencia</a></li>
       <li><a href="/contacto" class="btn-contacto-movil">Contactar</a></li>
-      
     </ul>
 
     <a href="/contacto" class="btn-contacto-pc">Contactar</a>
@@ -38,7 +27,6 @@
 </nav>
 
 <script>
-  // --- MOBILE MENU LOGIC ---
   const hamburger = document.getElementById('hamburger-btn');
   const navMenu = document.getElementById('nav-menu');
 
@@ -48,7 +36,6 @@
       navMenu.classList.toggle('active');
     });
 
-    // Close menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(n => n.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
@@ -57,11 +44,11 @@
 </script>
 
 <style>
-  /* --- DESKTOP STYLES --- */
+  /* --- BASE Y NAVEGACIÓN (Se mantiene igual para no romper nada) --- */
   .navbar {
-    background-color: #003366;
+    background-color: #063768;
     color: white;
-    padding: 1rem 0;
+    padding: 0.4rem 0; 
     position: fixed;
     width: 100%;
     top: 0;
@@ -72,6 +59,7 @@
 
   .container {
     max-width: 1200px;
+    max-height: 59px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -79,69 +67,29 @@
     align-items: center;
   }
 
-  /* --- ESTILOS DE LOGO PREMIUM --- */
-  .logo {
+  /* --- ESTILOS DEL NUEVO LOGO --- */
+  .logo-link {
     display: flex;
     align-items: center;
-    gap: 12px; /* Espacio entre escudo y texto */
     text-decoration: none;
-    transition: opacity 0.3s;
+    padding: 12px;
   }
 
-  .logo:hover {
-    opacity: 0.9;
+  .main-logo {
+    width: 150px;
+    height: auto; 
+    display: block;
   }
 
-  /* El Escudo */
-  .logo-icon {
-    width: 40px;
-    height: 40px;
-    color: #ff4500; /* Naranja corporativo */
-    background: rgba(255, 255, 255, 0.1); /* Fondo sutil */
-    border-radius: 8px;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 69, 0, 0.3);
+  .logo-link:hover .main-logo {
+    transform: scale(1.05);
   }
 
-  .logo-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* El Texto */
-  .logo-text {
-    display: flex;
-    flex-direction: column; /* Uno arriba del otro para efecto compacto */
-    line-height: 1;
-    justify-content: center;
-  }
-
-  .brand-name {
-    font-size: 1.4rem;
-    font-weight: 800; /* Letra bien gruesa */
-    color: white;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .brand-sub {
-    font-size: 0.75rem; /* Más pequeño */
-    color: #ff4500; /* Naranja */
-    font-weight: 600;
-    letter-spacing: 3px; /* Letras separadas estilo elegante */
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
+  /* --- RESTO DE ESTILOS (Links y Botones) --- */
   .nav-links {
     list-style: none;
     display: flex;
     gap: 30px;
-    margin: 0;
-    padding: 0;
     align-items: center;
   }
 
@@ -150,6 +98,7 @@
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
+    padding: 1.5px;
     transition: color 0.3s;
   }
 
@@ -163,20 +112,19 @@
     border-radius: 4px;
     font-weight: bold;
     transition: background-color 0.3s;
-    display: block;
   }
   
-  .btn-contacto-pc:hover { background-color: #e03e00; }
+  .btn-contacto-pc:hover {
+    background-color: #e03e00; 
+  }
 
   .btn-contacto-movil {
     display: none;
     background-color: #ff4500;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-top: 10px;
   }
 
-  /* --- MOBILE STYLES (Max 768px) --- */
   .hamburger {
     display: none;
     cursor: pointer;
@@ -200,22 +148,22 @@
       position: fixed;
       left: -100%;
       top: 70px;
-      gap: 0;
       flex-direction: column;
       background-color: #002b55;
       width: 100%;
-      text-align: center;
       transition: 0.3s;
       padding: 20px 0;
-      box-shadow: 0 10px 10px rgba(0,0,0,0.1);
     }
 
     .nav-links.active { left: 0; }
     .nav-links li { margin: 16px 0; }
 
-    /* Hamburger Animation */
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    .main-logo {
+      height: 150px; 
+    }
   }
 </style>
