@@ -16,10 +16,10 @@ Este proyecto fue desarrollado con un enfoque en **velocidad de carga**, **dise�
 2.  **📱 100% Adaptable:** Se ve perfecto en celulares, tablets y computadoras.
 3.  **🎡 Carrusel de Marcas:** Slider infinito con logotipos de las compañías aseguradoras (Allianz, Zurich, etc.).
 4.  **💬 Integración WhatsApp:** Los formularios de contacto abren directamente un chat de WhatsApp con el mensaje pre-redactado.
-5.  **🎨 Diseño UI/UX:**
-    * Barra de navegación inteligente.
-    * Logo vectorial (SVG) con modo oscuro/claro automático.
-    * Micro-interacciones visuales.
+5.  **🎨 Diseño UI/UX Premium:**
+    * Barra de navegación con efecto *Glassmorphism* y menú activo inteligente (Scroll Spy).
+    * Animaciones dinámicas al hacer scroll (*Reveal Animations*).
+    * Logo responsivo.
 
 ## 🛠️ Cómo ver el proyecto (Desarrollo)
 
@@ -37,10 +37,11 @@ Si descargas este código, necesitas tener **Node.js** instalado.
 
 ## 📂 Estructura del Proyecto
 
+* `src/assets/`: Imágenes y logos optimizados dinámicamente por Astro (WebP, AVIF).
 * `src/components/`: Aquí están las piezas (Barra, Footer, Carrusel).
 * `src/layouts/`: La estructura base de la página.
-* `src/pages/`: Las páginas del sitio (Inicio).
-* `public/`: Donde se guardan las imágenes y logos.
+* `src/pages/`: Las páginas del sitio (Inicio, Asistencia).
+* `public/`: Archivos estáticos crudos que no requieren optimización (favicon, robots.txt).
 
 ---
 © 2026 Silbert Seguros. Todos los derechos reservados.
