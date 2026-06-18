@@ -1,17 +1,29 @@
 ---
+
 ---
+
 <section id="contacto" class="contact-section">
   <div class="container">
-    
     <div class="info-box">
       <h2>Hablemos</h2>
-      <p>Estamos listos para asesorarte. Dejanos tus datos y nos pondremos en contacto a la brevedad.</p>
-      
+      <p>
+        Estamos listos para asesorarte. Dejanos tus datos y nos pondremos en
+        contacto a la brevedad.
+      </p>
+
       <div class="contact-details">
         <div class="detail-item">
           <strong>📍 Oficina:</strong>
-          <span><a href="https://maps.app.goo.gl/rwFx5cmB1NpAuwpw5" target="_blank" rel="noopener noreferrer" class="link-direccion">
-      Montañeses 1892 Belgrano</a></span>
+          <span
+            ><a
+              href="https://maps.app.goo.gl/rwFx5cmB1NpAuwpw5"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-direccion"
+            >
+              Montañeses 1892 Belgrano</a
+            ></span
+          >
         </div>
         <div class="detail-item">
           <strong>📧 Email:</strong>
@@ -30,15 +42,26 @@
 
     <div class="form-box">
       <form id="contactForm">
-        
         <div class="form-group">
           <label for="nombre">Nombre Completo</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ej: Juan Pérez"
+            required
+          />
         </div>
 
         <div class="form-group">
           <label for="telefono">Teléfono / Celular</label>
-          <input type="tel" id="telefono" name="telefono" placeholder="Ej: 11 1234 5678" required>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="Ej: 11 1234 5678"
+            required
+          />
         </div>
 
         <div class="form-group">
@@ -62,63 +85,70 @@
 
         <div class="form-group">
           <label for="mensaje">Datos Adicionales (Opcional)</label>
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Por favor indícanos: Marca, Modelo y Año del vehículo."></textarea>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="4"
+            placeholder="Por favor indícanos: Marca, Modelo y Año del vehículo."
+          ></textarea>
         </div>
 
         <button type="submit" class="btn-submit">ENVIAR CONSULTA</button>
       </form>
     </div>
-
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-
-    const selector = document.getElementById('interes') as HTMLSelectElement;
-    const mensajeArea = document.getElementById('mensaje') as HTMLTextAreaElement;
+  document.addEventListener("DOMContentLoaded", () => {
+    const selector = document.getElementById("interes") as HTMLSelectElement;
+    const mensajeArea = document.getElementById(
+      "mensaje",
+    ) as HTMLTextAreaElement;
 
     const ayudas: any = {
-        'Automotor': 'Por favor indícanos: Marca, Modelo y Año del vehículo.',
-        'Motos': 'Por favor indícanos: Marca, Cilindrada y Año.',
-        'Hogar': '¿Es casa o departamento? ¿Metros cuadrados aproximados?',
-        'Vida': '¿Qué edad tienes y qué capital te gustaría asegurar?',
-        'ART': '¿Cuántos empleados tiene la nómina aproximadamente?',
-        'Otro': 'Cuéntanos brevemente en qué podemos ayudarte.'
+      Automotor: "Por favor indícanos: Marca, Modelo y Año del vehículo.",
+      Motos: "Por favor indícanos: Marca, Cilindrada y Año.",
+      Hogar: "¿Es casa o departamento? ¿Metros cuadrados aproximados?",
+      Vida: "¿Qué edad tienes y qué capital te gustaría asegurar?",
+      ART: "¿Cuántos empleados tiene la nómina aproximadamente?",
+      Otro: "Cuéntanos brevemente en qué podemos ayudarte.",
     };
 
     function actualizarAyuda() {
-        // Chequeo de seguridad por si el elemento no cargó
-        if (!selector || !mensajeArea) return;
+      // Chequeo de seguridad por si el elemento no cargó
+      if (!selector || !mensajeArea) return;
 
-        const seleccion = selector.value;
-        mensajeArea.placeholder = ayudas[seleccion] || 'Cuéntanos más detalles para poder asesorarte mejor.';
+      const seleccion = selector.value;
+      mensajeArea.placeholder =
+        ayudas[seleccion] ||
+        "Cuéntanos más detalles para poder asesorarte mejor.";
     }
 
     if (selector) {
-        selector.addEventListener('change', actualizarAyuda);
+      selector.addEventListener("change", actualizarAyuda);
     }
 
     // --- LÓGICA DE PARÁMETROS URL ---
     const params = new URLSearchParams(window.location.search);
-    const tema = params.get('tema');
+    const tema = params.get("tema");
 
     if (tema && selector) {
       const opciones: any = {
-        'auto': 'Automotor',
-        'flotas': 'Flotas',
-        'motos': 'Motos',
-        'hogar': 'Hogar',
-        'comercio': 'Comercio',
-        'art': 'ART',
-        'caucion': 'Caucion',
-        'agro': 'Agro',
-        'vida': 'Vida',
-        'rc': 'RC',
-        'ap': 'AP',
-        'transporte': 'Transporte'
+        auto: "Automotor",
+        flotas: "Flotas",
+        motos: "Motos",
+        hogar: "Hogar",
+        comercio: "Comercio",
+        art: "ART",
+        caucion: "Caucion",
+        agro: "Agro",
+        vida: "Vida",
+        rc: "RC",
+        ap: "AP",
+        transporte: "Transporte",
       };
-      
+
       // Ahora podemos verificar si existe sin errores rojos
       if (opciones[tema]) {
         selector.value = opciones[tema];
@@ -126,18 +156,47 @@
       }
     }
 
-    // --- ENVÍO A WHATSAPP ---
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault(); 
+    // --- RESTRICCIÓN DE INPUT TELÉFONO ---
+    const telefonoField = document.getElementById(
+      "telefono",
+    ) as HTMLInputElement;
+    if (telefonoField) {
+      telefonoField.addEventListener("input", function () {
+        // Reemplaza en tiempo real cualquier carácter que no sea número, espacio, + o -
+        this.value = this.value.replace(/[^0-9+\s-]/g, "");
+      });
+    }
 
-        // Obtenemos valores asegurándonos del tipo de elemento
-        const nombre = (document.getElementById('nombre') as HTMLInputElement).value;
-        const telefono = (document.getElementById('telefono') as HTMLInputElement).value;
-        const interes = (document.getElementById('interes') as HTMLSelectElement).value;
-        const mensaje = (document.getElementById('mensaje') as HTMLInputElement).value;
+    // --- ENVÍO A WHATSAPP ---
+    const form = document.getElementById("contactForm");
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Obtenemos valores asegurándonos del tipo de elemento y aplicamos sanitización
+        const nombreInput = document.getElementById(
+          "nombre",
+        ) as HTMLInputElement;
+        const telefonoInput = document.getElementById(
+          "telefono",
+        ) as HTMLInputElement;
+        const interesInput = document.getElementById(
+          "interes",
+        ) as HTMLSelectElement;
+        const mensajeInput = document.getElementById(
+          "mensaje",
+        ) as HTMLTextAreaElement;
+
+        let nombre = nombreInput.value.trim();
+        let telefono = telefonoInput.value.trim();
+        const interes = interesInput.value;
+        let mensaje = mensajeInput.value.trim();
+
+        // Sanitización básica (evitar inyección de HTML o caracteres extraños en el texto)
+        nombre = nombre.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        telefono = telefono.replace(/[^0-9+\s-]/g, "");
+        mensaje = mensaje.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
         const telefonoDestino = "5491158778821";
 
@@ -146,8 +205,8 @@
         if (mensaje) texto += `Detalles: ${mensaje}`;
 
         const url = `https://wa.me/${telefonoDestino}?text=${encodeURIComponent(texto)}`;
-        
-        window.open(url, '_blank');
+
+        window.open(url, "_blank");
       });
     }
   });
@@ -199,10 +258,10 @@
   .form-box {
     flex: 1;
     min-width: 300px;
-    background-color: #e1ebf5ff; 
+    background-color: #e1ebf5ff;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 
   .form-group {
@@ -217,19 +276,29 @@
     font-size: 0.9rem;
   }
 
-  input[type="text"], input[type="tel"], select, textarea {
+  input[type="text"],
+  input[type="tel"],
+  select,
+  textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-family: inherit;
     font-size: 1rem;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
   }
 
-  input:focus, select:focus, textarea:focus {
+  input:focus,
+  select:focus,
+  textarea:focus {
     outline: none;
     border-color: #003366;
-    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.15);
+    transform: translateY(-2px);
   }
 
   .btn-submit {
@@ -242,17 +311,26 @@
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background-color: #e03e00;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(224, 62, 0, 0.3);
   }
 
   .link-direccion {
-  color: black;
-  text-decoration: none;
-  transition: color 0.2s ease;
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .link-direccion:hover {
-  text-decoration: underline;
+    text-decoration: underline;
   }
 
   .btn-submit:hover {

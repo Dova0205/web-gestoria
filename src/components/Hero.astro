@@ -1,8 +1,12 @@
 ---
+import { getImage } from "astro:assets";
+import portadaSrc from "../assets/portada.jpg";
+
+const optimizedBackground = await getImage({ src: portadaSrc, format: "webp" });
 ---
-<section class="hero-section">
+<section class="hero-section" style={`background-image: url('${optimizedBackground.src}');`}>
   <div class="overlay"></div> 
-  <div class="content">
+  <div class="content reveal">
     <h1>30 Años de Experiencia, Respaldo y Confianza.</h1>
     <p>Protegemos lo que más te importa para que vivas tranquilo.</p>
     
@@ -16,7 +20,6 @@
 <style>
   .hero-section {
     position: relative;
-    background-image: url('/portada.jpg');
     background-size: cover;
     background-position: center;
     height: 80vh;

@@ -1,14 +1,25 @@
 ---
+import { Image } from 'astro:assets';
+import zurichImg from '../assets/marcas/zurich.png';
+import allianzImg from '../assets/marcas/allianz.png';
+import laHolandoImg from '../assets/marcas/la-holando.png';
+import asociartImg from '../assets/marcas/asociart.png';
+import mercantilAndinaImg from '../assets/marcas/mercantil-andina.png';
+import swissMedicalImg from '../assets/marcas/swiss-medical.png';
+import barbussImg from '../assets/marcas/barbuss.png';
+import atmImg from '../assets/marcas/atm.png';
+import berkleyImg from '../assets/marcas/berkley.png';
+
 const rawBrands = [
-  { name: "Zurich", logo: "/marcas/zurich.png" },
-  { name: "Allianz", logo: "/marcas/allianz.png" },
-  { name: "La Holando", logo: "/marcas/la-holando.png" },
-  { name: "Asociart ART", logo: "/marcas/asociart.png" },
-  { name: "Mercantil Andina", logo: "/marcas/mercantil-andina.png" },
-  { name: "Swiss Medical", logo: "/marcas/swiss-medical.png" },
-  { name: "Barbuss", logo: "/marcas/barbuss.png" },
-  { name: "ATM Seguros", logo: "/marcas/atm.png" },
-  { name: "Berkley", logo: "/marcas/berkley.png" },
+  { name: "Zurich", logo: zurichImg },
+  { name: "Allianz", logo: allianzImg },
+  { name: "La Holando", logo: laHolandoImg },
+  { name: "Asociart ART", logo: asociartImg },
+  { name: "Mercantil Andina", logo: mercantilAndinaImg },
+  { name: "Swiss Medical", logo: swissMedicalImg },
+  { name: "Barbuss", logo: barbussImg },
+  { name: "ATM Seguros", logo: atmImg },
+  { name: "Berkley", logo: berkleyImg },
 ];
 
 const brands = [...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands];
@@ -18,14 +29,14 @@ const brands = [...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBr
 
 <section id="companias" class="brands-section">
   <div class="container">
-    <p class="section-title">Trabajamos con las compañías líderes</p>
+    <p class="section-title reveal">Trabajamos con las compañías líderes</p>
     
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper reveal">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
           {brands.map((brand) => (
             <div class="swiper-slide">
-              <img src={brand.logo} alt={`Seguros ${brand.name}`} />
+              <Image src={brand.logo} alt={`Seguros ${brand.name}`} />
             </div>
           ))}
         </div>

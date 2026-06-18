@@ -22,6 +22,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="description" content="Silbert Seguros - Asesoramiento integral en seguros patrimoniales, vida y ART. Más de 30 años protegiendo tu futuro en Buenos Aires." />
 		<meta name="keywords" content="gestoria, seguros, automotor, tramites, buenos aires, silbert, silvert, silver seguros, zilbert, seguro auto, seguro hogar" />
 		<meta name="author" content="Silbert Seguros" />
+		<meta name="theme-color" content="#063768" />
 
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content="¿Necesitas asegurar tu auto o tu casa? Asesoramiento profesional, rápido y humano. Cotizá ahora." />
@@ -51,7 +52,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 					"addressRegion": "Buenos Aires",
 					"postalCode": "1428",
 					"addressCountry": "AR"
-					},
+				},
 				"priceRange": "$$",
 				"openingHoursSpecification": [
 					{
@@ -63,6 +64,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 				]
 			}
 		</script>
+		<style is:inline>
+			/* --- REVEAL ANIMATIONS --- */
+			.reveal {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+			}
+
+			.reveal-visible {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		</style>
 	</head>
 	<body>
 		
@@ -70,6 +84,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<slot />
 		<Footer />
 
+		<script>
+			// SCROLL REVEAL ANIMATIONS
+			const reveals = document.querySelectorAll('.reveal');
+			const revealObserver = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('reveal-visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+			reveals.forEach(reveal => revealObserver.observe(reveal));
+		</script>
 	</body>
 </html>
 

@@ -1,17 +1,19 @@
 ---
+import { Image } from 'astro:assets';
+import oficinaSrc from '../assets/oficina.jpg';
 ---
 <section id="nosotros" class="about-section">
   <div class="container">
     
-    <div class="image-col">
-      <img src="/oficina.jpg" alt="Oficina Silbert Seguros" class="about-img">
+    <div class="image-col reveal">
+      <Image src={oficinaSrc} alt="Oficina Silbert Seguros" class="about-img" />
       <div class="experience-badge">
         <span class="years">30+</span>
         <span class="text">Años de<br>Experiencia</span>
       </div>
     </div>
 
-    <div class="text-col">
+    <div class="text-col reveal">
       <h4 class="subtitle">SOBRE NOSOTROS</h4>
       <h2>Compromiso y Transparencia en cada Póliza</h2>
       <p>
@@ -77,6 +79,12 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 10px 20px rgba(0,51,102,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .experience-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,51,102,0.4);
   }
 
   .years {
@@ -129,6 +137,14 @@
     margin-bottom: 0.8rem;
     color: #333;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .features-list li:hover {
+    transform: translateX(8px);
+    color: #003366;
   }
 
   .check {
