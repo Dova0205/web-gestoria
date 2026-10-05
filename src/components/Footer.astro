@@ -4,10 +4,12 @@ const currentYear = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="container">
-    
     <div class="footer-col">
       <h3>SILBERT <span class="highlight">SEGUROS</span></h3>
-      <p>Asesoramiento integral con más de 30 años de trayectoria en el mercado asegurador. Protegemos tu patrimonio y tu futuro.</p>
+      <p>
+        Asesoramiento integral con más de 30 años de trayectoria en el mercado
+        asegurador. Protegemos tu patrimonio y tu futuro.
+      </p>
     </div>
 
     <div class="footer-col">
@@ -16,18 +18,33 @@ const currentYear = new Date().getFullYear();
         <li><a href="/">Inicio</a></li>
         <li><a href="/#servicios">Servicios</a></li>
         <li><a href="/contacto">Contacto</a></li>
+        <li><a href="/asistencia">SOS / Asistencia</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Contacto</h4>
-      <p>📍 <a href="https://maps.app.goo.gl/rwFx5cmB1NpAuwpw5" target="_blank" rel="noopener noreferrer" class="link-direccion">
-      Montañeses 1892 Belgrano</a>
+      <p>
+        📍 <a
+          href="https://maps.app.goo.gl/rwFx5cmB1NpAuwpw5"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-direccion"
+        >
+          Montañeses 1892 Belgrano</a
+        >
       </p>
-      <p>📞 +54 9 11 5877-8821 Pamela Weidgans</p>
-      <p>📧 silberteguros@barter-group.com</p>
+      <p>
+        <a href="tel:++54 9 11 5877-8821" class="link-direccion"
+          >📞 +54 9 11 5877-8821 Pamela Weidgans</a
+        >
+      </p>
+      <p>
+        <a href="mailto:silberteguros@barter-group.com" class="link-direccion"
+          >📧 silberteguros@barter-group.com</a
+        >
+      </p>
     </div>
-
   </div>
 
   <div class="footer-bottom">
@@ -102,7 +119,7 @@ const currentYear = new Date().getFullYear();
     background-color: #001a33;
     padding: 1.5rem 20px;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -111,25 +128,25 @@ const currentYear = new Date().getFullYear();
   }
 
   .link-direccion {
-  color: #b0c4de;
-  text-decoration: none;
-  transition: color 0.2s ease;
+    color: #b0c4de;
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .link-direccion:hover {
-  text-decoration: underline;
+    text-decoration: underline;
   }
 
   /* Mobile */
   @media (max-width: 768px) {
     .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
     }
 
     .container {
-        padding: 0 30px;
+      padding: 0 30px;
     }
   }
 </style>
