@@ -1,18 +1,26 @@
 ---
-import { getImage } from "astro:assets";
+import { Image } from "astro:assets";
 import portadaSrc from "../assets/portada.jpg";
-
-const optimizedBackground = await getImage({ src: portadaSrc, format: "webp" });
 ---
-<section class="hero-section" style={`background-image: url('${optimizedBackground.src}');`}>
-  <div class="overlay"></div> 
+
+<section class="hero-section">
+  <Image 
+    src={portadaSrc} 
+    alt="Familia protegida y tranquila"
+    class="hero-bg"
+    fetchpriority="high"
+    loading="eager"
+    decoding="sync"
+    format="webp"
+  />
+  <div class="overlay"></div>
   <div class="content reveal">
     <h1>30 Años de Experiencia, Respaldo y Confianza.</h1>
     <p>Protegemos lo que más te importa para que vivas tranquilo.</p>
-    
+
     <div class="cta-buttons">
-      <a href="/#servicios" class="btn-primary">Cotizá tu Seguro</a> 
-      <a href="/contacto" class="btn-secondary">Hablemos</a> 
+      <a href="/#servicios" class="btn-primary">Cotizá tu Seguro</a>
+      <a href="/contacto" class="btn-secondary">Hablemos</a>
     </div>
   </div>
 </section>
@@ -20,14 +28,23 @@ const optimizedBackground = await getImage({ src: portadaSrc, format: "webp" });
 <style>
   .hero-section {
     position: relative;
-    background-size: cover;
-    background-position: center;
     height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
 
   /* Blue Overlay */
@@ -69,18 +86,20 @@ const optimizedBackground = await getImage({ src: portadaSrc, format: "webp" });
 
   /* Buttons */
   .btn-primary {
-    background-color: #ff4500;
+    background-color: #d13e00; /* WCAG AA contrast ratio */
     color: white;
     padding: 15px 30px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: transform 0.2s;
+    transition:
+      transform 0.2s,
+      background-color 0.2s;
   }
 
   .btn-primary:hover {
-    background-color: #e03e00;
+    background-color: #a83200;
     transform: scale(1.05);
   }
 
@@ -92,7 +111,9 @@ const optimizedBackground = await getImage({ src: portadaSrc, format: "webp" });
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background 0.3s, color 0.3s;
+    transition:
+      background 0.3s,
+      color 0.3s;
   }
 
   .btn-secondary:hover {
@@ -102,7 +123,11 @@ const optimizedBackground = await getImage({ src: portadaSrc, format: "webp" });
 
   /* Mobile */
   @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    .cta-buttons { flex-direction: column; }
+    h1 {
+      font-size: 2.5rem;
+    }
+    .cta-buttons {
+      flex-direction: column;
+    }
   }
 </style>

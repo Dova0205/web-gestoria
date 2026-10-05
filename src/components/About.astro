@@ -6,7 +6,16 @@ import oficinaSrc from '../assets/oficina.jpg';
   <div class="container">
     
     <div class="image-col reveal">
-      <Image src={oficinaSrc} alt="Oficina Silbert Seguros" class="about-img" />
+      <Image 
+        src={oficinaSrc} 
+        alt="Oficina Silbert Seguros" 
+        class="about-img"
+        widths={[400, 800]}
+        sizes="(max-width: 900px) 100vw, 50vw"
+        format="webp"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="experience-badge">
         <span class="years">30+</span>
         <span class="text">Años de<br>Experiencia</span>

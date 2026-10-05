@@ -25,7 +25,7 @@ import logoSrc from "../assets/logo.svg";
       <li><a href="/#companias">Compañías</a></li>
       <li><a href="/#nosotros">Nosotros</a></li>
       <li>
-        <a href="/asistencia" style="color: #ff4500; font-weight: bold;"
+        <a href="/asistencia" style="color: #d13e00; font-weight: bold;"
           >SOS / Asistencia</a
         >
       </li>
@@ -65,7 +65,6 @@ import logoSrc from "../assets/logo.svg";
           if (entry.isIntersecting) {
             navItems.forEach((link) => {
               link.classList.remove("active-spy");
-              // Check if the link's href matches the section's ID
               if (link.getAttribute("href") === "/#" + entry.target.id) {
                 link.classList.add("active-spy");
               }
@@ -125,6 +124,7 @@ import logoSrc from "../assets/logo.svg";
     height: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
+    filter: brightness(0) invert(0.9);
   }
   .logo-link:hover .main-logo {
     transform: scale(1.05);
@@ -155,12 +155,12 @@ import logoSrc from "../assets/logo.svg";
   }
 
   .nav-links a.active-spy {
-    color: #ff4500;
-    border-bottom: 2px solid #ff4500;
+    color: #d13e00;
+    border-bottom: 2px solid #d13e00;
   }
 
   .btn-contacto-pc {
-    background-color: #ff4500;
+    background-color: #d13e00;
     color: white;
     padding: 0.5rem 1.2rem;
     text-decoration: none;
@@ -170,14 +170,15 @@ import logoSrc from "../assets/logo.svg";
   }
 
   .btn-contacto-pc:hover {
-    background-color: #e03e00;
+    background-color: #a83200;
   }
 
   .btn-contacto-movil {
     display: none;
-    background-color: #ff4500;
+    background-color: #d13e00;
     padding: 10px 20px;
     border-radius: 5px;
+    font-weight: bold;
   }
 
   .hamburger {

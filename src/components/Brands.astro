@@ -36,7 +36,14 @@ const brands = [...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBr
         <div class="swiper-wrapper">
           {brands.map((brand) => (
             <div class="swiper-slide">
-              <Image src={brand.logo} alt={`Seguros ${brand.name}`} />
+              <Image 
+                src={brand.logo} 
+                alt={`Seguros ${brand.name}`} 
+                width={200}
+                format="webp"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           ))}
         </div>
