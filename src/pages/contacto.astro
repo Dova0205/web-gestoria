@@ -4,12 +4,20 @@ import Contact from '../components/Contact.astro';
 ---
 
 <Layout title="Contacto | Silbert Seguros">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contacto - Silbert Seguros",
+            "description": "Formulario de contacto y teléfonos de Silbert Seguros.",
+            "url": "https://silbertseguros.com.ar/contacto"
+        }
+    </script>
     <main>
         <div style="margin-top: 2rem;"></div>
         <Contact />
     </main>
-
-    </Layout>
+</Layout>
 
 <style>
     main {

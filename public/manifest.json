@@ -1,0 +1,21 @@
+{
+  "name": "Silbert Seguros",
+  "short_name": "Silbert",
+  "description": "Asesoramiento integral en seguros y gestoría automotor en Buenos Aires.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#063768",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
