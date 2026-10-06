@@ -361,10 +361,6 @@
     box-shadow: 0 5px 15px rgba(0, 51, 102, 0.1);
   }
 
-  .service-card:hover h3 {
-    color: #ff4500;
-  }
-
   .icon-wrapper {
     width: 50px;
     height: 50px;
@@ -416,6 +412,7 @@
     padding: 1.5rem;
     box-sizing: border-box;
 
+    visibility: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -430,17 +427,21 @@
   .service-card:hover .icon-wrapper,
   .service-card:focus .icon-wrapper,
   .service-card:active .icon-wrapper,
+  .service-card.activo .icon-wrapper,
   .service-card:hover h3,
   .service-card:focus h3,
-  .service-card:active h3 {
+  .service-card:active h3,
+  .service-card.activo h3 {
     opacity: 0;
     transform: translateY(-10px);
   }
 
   .service-card:hover .description,
   .service-card:focus .description,
-  .service-card:active .description {
+  .service-card:active .description,
+  .service-card.activo .description {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
   }
   .description {
@@ -448,3 +449,34 @@
     font-weight: 600;
   }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Detecta si la pantalla es táctil
+    const esTactil = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (esTactil) {
+      // Selecciona todos tus contenedores
+      const tarjetas = document.querySelectorAll(".service-card");
+      tarjetas.forEach((tarjeta) => {
+        tarjeta.addEventListener("click", function (e) {
+          // Si la tarjeta NO tiene la clase 'activo', es el primer toque
+          if (!this.classList.contains("activo")) {
+            e.preventDefault(); // Detiene el enlace (no va a /contacto...)
+
+            // Oculta la descripción de cualquier otra tarjeta que estuviera abierta
+            tarjetas.forEach((t) => t.classList.remove("activo"));
+
+            // Activa la tarjeta que el usuario acaba de tocar
+            this.classList.add("activo");
+          }
+          // Si ya tiene la clase 'activo', el enlace de 'href' funcionará normalmente en el segundo toque
+        });
+      });
+      // Si el usuario toca en cualquier otra parte de la pantalla (fuera de las tarjetas), cerramos todo
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".service-card")) {
+          tarjetas.forEach((t) => t.classList.remove("activo"));
+        }
+      });
+    }
+  });
+</script>
