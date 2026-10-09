@@ -2,10 +2,20 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
+import allianzImg from "../assets/marcas/allianz.png";
+import barbussImg from "../assets/marcas/barbuss.png";
+import laHolandoImg from "../assets/marcas/la-holando.png";
+import asociartImg from "../assets/marcas/asociart.png";
+import atmImg from "../assets/marcas/atm.png";
+import berkleyImg from "../assets/marcas/berkley.png";
+import mercantilAndinaImg from "../assets/marcas/mercantil-andina.png";
+import swissMedicalImg from "../assets/marcas/swiss-medical.png";
+import zurichImg from "../assets/marcas/zurich.png";
+
 const companies = [
   {
     name: "Allianz",
-    logo: "/marcas/allianz.png",
+    logo: allianzImg,
     label1: "Auxilio Mecánico",
     num1: "0800-888-24324",
     icon1: "auto",
@@ -15,7 +25,7 @@ const companies = [
   },
   {
     name: "Barbuss",
-    logo: "/marcas/barbuss.png",
+    logo: barbussImg,
     label1: "Riesgos Generales",
     num1: "0800-333-2927",
     icon1: "auto",
@@ -26,7 +36,7 @@ const companies = [
   },
   {
     name: "La Holando",
-    logo: "/marcas/la-holando.png",
+    logo: laHolandoImg,
     label1: "Auxilio Mecánico",
     num1: "0800-999-0002",
     icon1: "auto",
@@ -37,42 +47,42 @@ const companies = [
   },
   {
     name: "Asociart ART",
-    logo: "/marcas/asociart.png",
+    logo: asociartImg,
     label1: "Emergencias Médicas",
     num1: "0800-888-0093",
     icon1: "medico",
   },
   {
     name: "ATM Seguros",
-    logo: "/marcas/atm.png",
+    logo: atmImg,
     label1: "Auxilio Mecánico",
     num1: "0800-345-1240",
     icon1: "auto",
   },
   {
     name: "Berkley",
-    logo: "/marcas/berkley.png",
+    logo: berkleyImg,
     label1: "Auxilio Mecánico",
     num1: "0800-555-0465",
     icon1: "auto",
   },
   {
     name: "Mercantil Andina",
-    logo: "/marcas/mercantil-andina.png",
+    logo: mercantilAndinaImg,
     label1: "Auxilio Mecánico",
     num1: "0800-888-4488",
     icon1: "auto",
   },
   {
     name: "Swiss Medical",
-    logo: "/marcas/swiss-medical.png",
+    logo: swissMedicalImg,
     label1: "Auxilio Mecánico",
     num1: "0800-777-7800",
     icon1: "auto",
   },
   {
     name: "Zurich",
-    logo: "/marcas/zurich.png",
+    logo: zurichImg,
     label1: "Auxilio ZURICH",
     num1: "0800-222-1600",
     icon1: "auto",
@@ -126,7 +136,7 @@ const icons: any = {
         companies.map((company) => (
           <article class="company-card">
             <div class="card-header">
-              <Image src={company.logo} alt={`Logo ${company.name}`} inferSize={true} />
+              <Image src={company.logo} alt={`Logo ${company.name}`} />
             </div>
 
             <div class="card-body">
