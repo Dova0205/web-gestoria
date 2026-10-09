@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
-    "astro": "^5.16.15"
+    "astro": "^5.16.15",
+    "swiper": "^14.3.0"
   },
   "allowScripts": {
     "esbuild@0.25.12": true,

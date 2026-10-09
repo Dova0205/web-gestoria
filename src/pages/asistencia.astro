@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 const companies = [
   {
@@ -125,7 +126,7 @@ const icons: any = {
         companies.map((company) => (
           <article class="company-card">
             <div class="card-header">
-              <img src={company.logo} alt={`Logo ${company.name}`} />
+              <Image src={company.logo} alt={`Logo ${company.name}`} inferSize={true} />
             </div>
 
             <div class="card-body">
@@ -161,7 +162,12 @@ const icons: any = {
 
               {company.extraInfo && (
                 <div class="extra-info">
-                  <p set:html={company.extraInfo} />
+                  <p>{company.extraInfo.split('<br>').map((line, i) => (
+                    <>
+                      {line}
+                      {i === 0 && <br />}
+                    </>
+                  ))}</p>
                 </div>
               )}
             </div>

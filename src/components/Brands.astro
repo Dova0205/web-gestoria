@@ -22,10 +22,8 @@ const rawBrands = [
   { name: "Berkley", logo: berkleyImg },
 ];
 
-const brands = [...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands];
+const brands = rawBrands;
 ---
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <section id="companias" class="brands-section">
   <div class="container">
@@ -53,9 +51,10 @@ const brands = [...rawBrands, ...rawBrands, ...rawBrands, ...rawBrands, ...rawBr
   </div>
 </section>
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  import Swiper from 'swiper/bundle';
+  import 'swiper/css/bundle';
 
-<script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper(".mySwiper", {
       slidesPerView: "auto", 
