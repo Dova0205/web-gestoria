@@ -37,7 +37,8 @@ const brands = rawBrands;
               <Image 
                 src={brand.logo} 
                 alt={`Seguros ${brand.name}`} 
-                width={200}
+                widths={[100, 150, 200]}
+                sizes="150px"
                 format="webp"
                 loading="lazy"
                 decoding="async"
@@ -52,25 +53,40 @@ const brands = rawBrands;
 </section>
 
 <script>
-  import Swiper from 'swiper/bundle';
-  import 'swiper/css/bundle';
-
   document.addEventListener('DOMContentLoaded', function () {
-    const swiper = new Swiper(".mySwiper", {
-      slidesPerView: "auto", 
-      spaceBetween: 0,       
-      loop: true,            
-      speed: 4000, 
-      
-      grabCursor: true,      
-      freeMode: true,
-      
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false, 
-        pauseOnMouseEnter: false,
-      },
-    });
+    const brandsSection = document.getElementById('companias');
+    
+    if (!brandsSection) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          obs.disconnect();
+          
+          // Import Swiper and its CSS only when the section is visible
+          Promise.all([
+            import('swiper/bundle'),
+            import('swiper/css/bundle')
+          ]).then(([ { default: Swiper } ]) => {
+            new Swiper(".mySwiper", {
+              slidesPerView: "auto", 
+              spaceBetween: 0,       
+              loop: true,            
+              speed: 4000, 
+              grabCursor: true,      
+              freeMode: true,
+              autoplay: {
+                delay: 0,
+                disableOnInteraction: false, 
+                pauseOnMouseEnter: false,
+              },
+            });
+          }).catch(console.error);
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    observer.observe(brandsSection);
   });
 </script>
 
