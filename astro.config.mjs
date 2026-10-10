@@ -4,4 +4,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://silbertseguros.com.ar',
   integrations: [sitemap()],
+  build: {
+    inlineStylesheets: 'always'
+  }
 });
