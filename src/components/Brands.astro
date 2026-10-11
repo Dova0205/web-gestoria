@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import 'swiper/css/bundle';
 import zurichImg from '../assets/marcas/zurich.png';
 import allianzImg from '../assets/marcas/allianz.png';
 import laHolandoImg from '../assets/marcas/la-holando.png';
@@ -22,7 +23,7 @@ const rawBrands = [
   { name: "Berkley", logo: berkleyImg },
 ];
 
-const brands = rawBrands;
+const brands = [...rawBrands, ...rawBrands, ...rawBrands];
 ---
 
 <section id="companias" class="brands-section">
@@ -53,9 +54,8 @@ const brands = rawBrands;
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  function initSwiper() {
     const brandsSection = document.getElementById('companias');
-    
     if (!brandsSection) return;
 
     const observer = new IntersectionObserver((entries, obs) => {
@@ -63,11 +63,7 @@ const brands = rawBrands;
         if (entry.isIntersecting) {
           obs.disconnect();
           
-          // Import Swiper and its CSS only when the section is visible
-          Promise.all([
-            import('swiper/bundle'),
-            import('swiper/css/bundle')
-          ]).then(([ { default: Swiper } ]) => {
+          import('swiper/bundle').then(({ default: Swiper }) => {
             new Swiper(".mySwiper", {
               slidesPerView: "auto", 
               spaceBetween: 0,       
@@ -84,10 +80,16 @@ const brands = rawBrands;
           }).catch(console.error);
         }
       });
-    }, { rootMargin: '200px' });
+    }, { rootMargin: '300px' });
 
     observer.observe(brandsSection);
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSwiper);
+  } else {
+    initSwiper();
+  }
 </script>
 
 <style>
