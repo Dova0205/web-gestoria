@@ -455,25 +455,25 @@
     const esTactil = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (esTactil) {
       // Selecciona todos tus contenedores
-      const tarjetas = document.querySelectorAll(".service-card");
+      const tarjetas = document.querySelectorAll<HTMLElement>(".service-card");
       tarjetas.forEach((tarjeta) => {
-        tarjeta.addEventListener("click", function (e) {
+        tarjeta.addEventListener("click", (e) => {
           // Si la tarjeta NO tiene la clase 'activo', es el primer toque
-          if (!this.classList.contains("activo")) {
+          if (!tarjeta.classList.contains("activo")) {
             e.preventDefault(); // Detiene el enlace (no va a /contacto...)
 
             // Oculta la descripción de cualquier otra tarjeta que estuviera abierta
             tarjetas.forEach((t) => t.classList.remove("activo"));
 
             // Activa la tarjeta que el usuario acaba de tocar
-            this.classList.add("activo");
+            tarjeta.classList.add("activo");
           }
           // Si ya tiene la clase 'activo', el enlace de 'href' funcionará normalmente en el segundo toque
         });
       });
       // Si el usuario toca en cualquier otra parte de la pantalla (fuera de las tarjetas), cerramos todo
-      document.addEventListener("click", function (e) {
-        if (!e.target.closest(".service-card")) {
+      document.addEventListener("click", (e) => {
+        if (!(e.target as Element)?.closest(".service-card")) {
           tarjetas.forEach((t) => t.classList.remove("activo"));
         }
       });
