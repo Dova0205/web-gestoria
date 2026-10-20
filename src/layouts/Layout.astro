@@ -4,9 +4,13 @@ import Footer from '../components/Footer.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Silbert Seguros - Asesoramiento integral en seguros patrimoniales, vida y ART. Más de 30 años protegiendo tu futuro en Buenos Aires.",
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -16,18 +20,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
-		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="canonical" href={canonicalURL} />
 
 		<title>{title}</title>
-		<meta name="description" content="Silbert Seguros - Asesoramiento integral en seguros patrimoniales, vida y ART. Más de 30 años protegiendo tu futuro en Buenos Aires." />
+		<meta name="description" content={description} />
 		<meta name="keywords" content="gestoria, seguros, automotor, tramites, buenos aires, silbert, silvert, silver seguros, zilbert, seguro auto, seguro hogar" />
 		<meta name="author" content="Silbert Seguros" />
 		<meta name="theme-color" content="#063768" />
 
 		<meta property="og:title" content={title} />
-		<meta property="og:description" content="¿Necesitas asegurar tu auto o tu casa? Asesoramiento profesional, rápido y humano. Cotizá ahora." />
+		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://silbertseguros.com.ar" />
+		<meta property="og:url" content={canonicalURL.href} />
 		<meta property="og:image" content="https://silbertseguros.com.ar/og-logo.png" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -39,7 +43,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" as="style">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 		<noscript>
 			<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">

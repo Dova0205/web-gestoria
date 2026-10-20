@@ -102,7 +102,10 @@ const icons: any = {
 };
 ---
 
-<Layout title="Teléfonos de Emergencia | Silbert Seguros">
+<Layout
+  title="Teléfonos de Emergencia | Silbert Seguros"
+  description="Teléfonos y contactos de emergencia las 24 horas de las principales compañías de seguros aliadas a Silbert Seguros."
+>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -156,6 +159,7 @@ const icons: any = {
                       : `tel:${company.num2}`
                   }
                   target={company.icon2 === "whatsapp" ? "_blank" : "_self"}
+                  rel={company.icon2 === "whatsapp" ? "noopener noreferrer" : undefined}
                   class={`btn-call ${company.icon2 === "barco" ? "btn-nautica" : "btn-whatsapp"}`}
                 >
                   <span class="icon-svg" set:html={icons[company.icon2]} />
