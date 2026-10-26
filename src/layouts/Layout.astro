@@ -23,6 +23,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		
 		<link rel="canonical" href={canonicalURL} />
 
+		<!-- Google tag (gtag.js) -->
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-20DZ9399NR"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-20DZ9399NR');
+		</script>
+
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="keywords" content="gestoria, seguros, automotor, tramites, buenos aires, silbert, silvert, silver seguros, zilbert, seguro auto, seguro hogar" />
