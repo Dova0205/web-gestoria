@@ -1,7 +1,7 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 
 interface Props {
 	title: string;
@@ -18,23 +18,32 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!doctype html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-		<link rel="canonical" href={canonicalURL} />
-
 		<!-- Google tag (gtag.js) -->
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-20DZ9399NR"></script>
+		<script
+			is:inline
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-20DZ9399NR"
+		></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-20DZ9399NR');
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-20DZ9399NR");
 		</script>
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="canonical" href={canonicalURL} />
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<meta name="keywords" content="gestoria, seguros, automotor, tramites, buenos aires, silbert, silvert, silver seguros, zilbert, seguro auto, seguro hogar" />
+		<meta
+			name="keywords"
+			content="gestoria, seguros, automotor, tramites, buenos aires, silbert, silvert, silver seguros, zilbert, seguro auto, seguro hogar"
+		/>
 		<meta name="author" content="Silbert Seguros" />
 		<meta name="theme-color" content="#063768" />
 
@@ -42,20 +51,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL.href} />
-		<meta property="og:image" content="https://silbertseguros.com.ar/og-logo.png" />
+		<meta
+			property="og:image"
+			content="https://silbertseguros.com.ar/og-logo.png"
+		/>
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
+		<link
+			rel="icon"
+			type="image/png"
+			href="/favicon-48x48.png"
+			sizes="48x48"
+		/>
 		<link rel="icon" type="image/png" href="/favicon.png" sizes="192x192" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/manifest.json" />
 		<meta name="generator" content={Astro.generator} />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap"
+			rel="stylesheet"
+			media="print"
+			onload="this.media='all'"
+		/>
 		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+			<link
+				href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap"
+				rel="stylesheet"
+			/>
 		</noscript>
 
 		<script type="application/ld+json">
@@ -68,7 +93,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 				"telephone": "+5491158778821",
 				"address": {
 					"@type": "PostalAddress",
-					"streetAddress": "Montañeses 1892",  
+					"streetAddress": "Montañeses 1892",
 					"addressLocality": "Belgrano",
 					"addressRegion": "Buenos Aires",
 					"postalCode": "1428",
@@ -77,10 +102,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 				"priceRange": "$$",
 				"openingHoursSpecification": [
 					{
-					"@type": "OpeningHoursSpecification",
-					"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-					"opens": "10:00",
-					"closes": "16:30"
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": [
+							"Monday",
+							"Tuesday",
+							"Wednesday",
+							"Thursday",
+							"Friday"
+						],
+						"opens": "10:00",
+						"closes": "16:30"
 					}
 				]
 			}
@@ -90,7 +121,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			.reveal {
 				opacity: 0;
 				transform: translateY(30px);
-				transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+				transition:
+					opacity 0.8s ease-out,
+					transform 0.8s ease-out;
 			}
 
 			.reveal-visible {
@@ -100,7 +133,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		</style>
 	</head>
 	<body>
-		
 		<Navbar />
 		<slot />
 		<Footer />
@@ -108,31 +140,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 		<script>
 			// SCROLL REVEAL ANIMATIONS
-			const reveals = document.querySelectorAll('.reveal');
-			const revealObserver = new IntersectionObserver((entries, observer) => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('reveal-visible');
-						observer.unobserve(entry.target);
-					}
-				});
-			}, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+			const reveals = document.querySelectorAll(".reveal");
+			const revealObserver = new IntersectionObserver(
+				(entries, observer) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("reveal-visible");
+							observer.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
+			);
 
-			reveals.forEach(reveal => revealObserver.observe(reveal));
+			reveals.forEach((reveal) => revealObserver.observe(reveal));
 		</script>
 	</body>
 </html>
 
 <style is:global>
 	/* Reseteo básico */
-	*, *::before, *::after {
+	*,
+	*::before,
+	*::after {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 	}
 
 	html {
-		scroll-padding-top: 50px; 
+		scroll-padding-top: 50px;
 		scroll-behavior: smooth;
 	}
 
@@ -140,14 +177,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		margin: 0;
 		width: 100%;
 		height: 100%;
-		font-family: 'Montserrat', sans-serif;
+		font-family: "Montserrat", sans-serif;
 		background-color: #ffffff;
-		overflow-x: hidden; 
-		padding-top: 67px; 
+		overflow-x: hidden;
+		padding-top: 67px;
 	}
-	
+
 	img {
-        max-width: 100%;
-        height: auto;
-    }
+		max-width: 100%;
+		height: auto;
+	}
 </style>
